@@ -1,0 +1,73 @@
+---
+title: "p8105_hw1_tp2859"
+output: html_document
+date: "2024-09-20"
+---
+
+```{r}
+#loading data set
+data("penguins", package = "palmerpenguins")
+```
+
+#Problem1
+```{r pressure, echo=FALSE}
+#the data in this dataset, including names / values of important variables
+penguins
+#the size of the dataset (using nrow and ncol)
+ncol(penguins)
+nrow(penguins)
+#the mean flipper length
+mean(penguins$flipper_length_mm,na.rm = TRUE)
+```
+
+```{r setup, include=FALSE}
+library(ggplot2)
+
+# Making a scatterplot of flipper_length_mm (y) vs bill_length_mm (x)
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  labs(title = "Scatterplot of Flipper Length vs Bill Length",
+       x = "Bill Length (mm)", 
+       y = "Flipper Length (mm)") +
+  theme_minimal()
+
+# Saving the scatterplot to the project directory
+ggsave("scatterplot_penguins.png")
+#the result will be save in a png file
+```
+
+#Problem2
+```{r pressure, echo=FALSE}
+#a random sample of size 10 from a standard Normal distribution
+random_sample <- rnorm(10)
+#a logical vector indicating whether elements of the sample are greater than 0
+log_vector <- random_sample > 0
+#a character vector of length 10
+c_vector <- c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
+#a factor vector of length 10, with 3 different factor “levels”
+f_vector <- factor(rep(c("Low", "Medium", "High"), length.out = 10))
+#creating data frame with these sample and vector
+df <- data.frame(random_sample, log_vector, c_vector, f_vector)
+```
+
+
+```{r pressure, echo=FALSE}
+#loading library
+library(tidyverse)
+#random sample can return a mean because it's numeric.Logical vector can return a mean as True = 1, and False = 0
+mean_random <- mean(pull(df, random_sample)) 
+mean_log <- mean(pull(df, log_vector))
+#Character and factor variables cannot because we cannot get the mean of non-numeric variables.
+mean_c <- mean(pull(df, c_vector))
+mean_f <- mean(pull(df, f_vector))
+```
+
+```{r}
+#Covert to numeric with as.numeric
+numeric_logical <- as.numeric(df$log_vector)
+numeric_character <- as.numeric(df$c_vector)
+numeric_factor <- as.numeric(df$f_vector)
+#numeric_character <- as.numeric(df$c_vector) doesn't work. However, it works for log_vector and f_vector.
+#This helps explain why the mean of a logical variable works.Since TRUE and FALSE can be interpreted as 1 and 0, Low,medium,high can also be represent by 1,2,3.But all the element in c_vector is character which cannot be covert to numeric. The numeric conversion allows certain types or patterns to be treated as numbers.
+```
+
