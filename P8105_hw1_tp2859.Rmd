@@ -5,6 +5,9 @@ github_document:
     html_preview: false
 date: "2024-09-20"
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ```{r}
 #loading data set
