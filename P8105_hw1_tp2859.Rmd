@@ -1,6 +1,8 @@
 ---
 title: "p8105_hw1_tp2859"
-output: html_document
+output:
+github_document:
+    html_preview: false
 date: "2024-09-20"
 ---
 
