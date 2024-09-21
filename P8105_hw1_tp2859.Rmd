@@ -15,7 +15,7 @@ data("penguins", package = "palmerpenguins")
 ```
 
 #Problem1
-```{r pressure, echo=FALSE}
+```{r}
 #the data in this dataset, including names / values of important variables
 penguins
 #the size of the dataset (using nrow and ncol)
@@ -42,7 +42,7 @@ ggsave("scatterplot_penguins.png")
 ```
 
 #Problem2
-```{r pressure, echo=FALSE}
+```{r}
 #a random sample of size 10 from a standard Normal distribution
 random_sample <- rnorm(10)
 #a logical vector indicating whether elements of the sample are greater than 0
@@ -56,7 +56,7 @@ df <- data.frame(random_sample, log_vector, c_vector, f_vector)
 ```
 
 
-```{r pressure, echo=FALSE}
+```{r}
 #loading library
 library(tidyverse)
 #random sample can return a mean because it's numeric.Logical vector can return a mean as True = 1, and False = 0
